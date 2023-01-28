@@ -31,6 +31,17 @@ async function doSignUp(req, res) {
 
   try {
     const isExisting = await Patient.findOne({ email });
+
+    const newPatient = {
+      generalInfo: {
+        firstName,
+        lastName,
+        email,
+        phoneNo,
+        address,
+        psid: "PT-" + uid,
+      },
+    };
     console.log(isExisting);
   } catch (error) {}
 }
