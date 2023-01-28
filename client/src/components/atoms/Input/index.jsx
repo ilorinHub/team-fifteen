@@ -48,7 +48,13 @@ const Input = ({
       {prefix ? prefix : search ? <SearchIcon /> : null}
       {label ? <label htmlFor={name}>{label}</label> : null}
       <input
-        type={type === "password" && showPassword ? "password" : "text"}
+        type={
+          type !== "password"
+            ? type
+            : type === "password" && showPassword
+            ? "password"
+            : "text"
+        }
         name={name}
         onFocus={handleFocus}
         onBlur={handleBlur}
