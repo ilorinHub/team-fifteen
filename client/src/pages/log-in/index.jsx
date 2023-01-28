@@ -34,8 +34,7 @@ const LogInPage = () => {
                     name="email"
                     onChange={handleInputField}
                     value={loginPayload.email}
-                    
-                  />
+                    />
                   </div>
                   <div className='mb-[2.875rem]'>
                   <Input type='password' label="Password" placeholder="Enter your password"
