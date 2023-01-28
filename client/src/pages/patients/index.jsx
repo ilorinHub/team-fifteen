@@ -32,8 +32,8 @@ const PatientsPage = () => {
         closeModal={showModal}
         modalTitle={
           modalType === "add"
-            ? "Add New Appointment Information"
-            : "View Appointment Information"
+            ? "Add New Patient Information"
+            : "View Patient Information"
         }
       >
         {modalType === "add" ? (
@@ -113,7 +113,67 @@ const PatientsPage = () => {
             </div>
           </form>
         ) : modalType === "view" ? (
-          <div>View field</div>
+          <div className="form-stage-container">
+            <div className="flex justify-between  gap-x-4">
+              <div className="flex flex-col gap-y-1">
+                <img src="/img/Frame.webp" alt="frame-img" />
+                <span>Abdulhafiz Jimoh</span>
+              </div>
+              <div className=" bg-[#F5F5F5] w-[25.3125rem] h-[7.9375rem] rounded-lg gap-x-8 py-2 px-6 gap-y-6">
+                <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center ">
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>PSID</span>
+                    <span className="font-extralight">PT-3212</span>
+                  </div>
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>Phone Number</span>
+                    <span className="font-extralight">+23481904300981</span>
+                  </div>
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>Gender</span>
+                    <span className="font-extralight">Female</span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center">
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>Age</span>
+                    <span className="font-extralight">27 years old</span>
+                  </div>
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>Health State</span>
+                    <span className="font-extralight">Receiving Treatment</span>
+                  </div>
+                  <div className="flex flex-col gap-y-1 ">
+                    <span>Blood Type</span>
+                    <span className="font-extralight">AB+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between my-6">
+              <div className="flex flex-col gap-y-1">
+                <span>Doctor In Change</span>
+                <span>Dr Ajisafe</span>
+              </div>
+              <div className="flex flex-col gap-y-1 ">
+                <span>Allergies</span>
+                <span>Dust,Pollen,Animal Dander,Dust Mites and Mold</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-y-1 ">
+              <span>Diagnosis</span>
+              <span>
+                Typhoid, Malaria, Athritis, Diabetes, Rheumatism, Hypertension
+              </span>
+            </div>
+            <div className="flex flex-col gap-y-1 my-6">
+              <span>Medical Conditions</span>
+              <span>Chronic headache, Back ache, Whooping cough, Catarhh</span>
+            </div>
+            <div className="flex justify-end">
+              <Button label="Close" />
+            </div>
+          </div>
         ) : null}
       </Modal>
     </ScreenLayout>
