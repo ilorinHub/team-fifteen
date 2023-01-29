@@ -12,6 +12,7 @@ const Button = ({
   type,
   ht,
   onClick,
+  bg,
 }) => {
   return (
     <button
