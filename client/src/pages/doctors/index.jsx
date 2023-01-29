@@ -17,7 +17,7 @@ const DoctorsPage = () => {
   };
   return (
     <ScreenLayout title="Doctors" onClick={handleModal}>
-      <DoctorsTable onClick={() => handleAddModalType("view")} />
+      <DoctorsTable />
       <Modal handleCloseModal={setShowModal} closeModal={showModal}></Modal>
     </ScreenLayout>
   );

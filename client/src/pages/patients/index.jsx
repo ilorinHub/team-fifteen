@@ -61,7 +61,7 @@ const PatientsPage = () => {
       inputName="filterPatient"
       onClick={() => handleAddModalType("add")}
     >
-      <PatientTable onClick={() => handleAddModalType("view")} />
+      <PatientTable />
       <Modal
         handleCloseModal={setShowModal}
         closeModal={showModal}
