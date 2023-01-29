@@ -5,18 +5,21 @@ import PaginationArrowRight from "../../atoms/vectors/PaginationArrowRight";
 import "../Table/TableStyles.scss";
 import "./PatientTableStyles.scss";
 
-const PatientTable = ({ tableData, tableDataHeading }) => {
+const PatientTable = ({ tableData, tableDataHeading, onClick }) => {
   const [currentPagination, setCurrentPagination] = useState(1);
   const patientTableHeading = [
     "S/N",
     "Name",
-    "Unique Id",
+    "PS Id",
     "Gender",
     "Diagnoses",
     "Health State",
     "Entry Date",
     "Discharged Date",
   ];
+  const handleViewPatientsDetails = () => {
+    onClick("view");
+  };
 
   return (
     <div className={clsx("table-container")}>
@@ -45,6 +48,7 @@ const PatientTable = ({ tableData, tableDataHeading }) => {
                 i === arr.length - 1 ? "border-y" : "border-t"
               )}
               key={"appointment-table-data" + i}
+              onClick={handleViewPatientsDetails}
             >
               <span className="tb-number">01</span>
               <div className="flex items-center gap-x-5">
