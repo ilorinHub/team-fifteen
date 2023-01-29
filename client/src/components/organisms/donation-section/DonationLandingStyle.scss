@@ -1,0 +1,12 @@
+.landing-page-donation-section {
+  @apply grid grid-cols-[0.35fr_0.35fr] gap-x-16 justify-center py-16;
+  .donation-section {
+    @apply flex flex-col justify-center gap-y-4;
+    h2 {
+      @apply text-[#333333] text-5xl font-bold;
+    }
+    p {
+      @apply text-[#333333] text-[1.125rem] leading-[2rem] font-medium;
+    }
+  }
+}

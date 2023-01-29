@@ -11,7 +11,7 @@ import SignupPage from "./pages/sign-up";
 import LogInPage from "./pages/login";
 import AdminloginPage from "./pages/admin-login";
 import StaffloginPage from "./pages/staff-login";
-import DonationLanding from "./components/organisms/donationlanding";
+import DonationLanding from "./components/organisms/donation-section";
 import PatientHome from "./pages/patients-home";
 
 const AppRoutes = () => {

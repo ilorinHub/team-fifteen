@@ -28,12 +28,12 @@ const AppointmentsPage = () => {
   const [appointmentPayload, setAppointmentPayload] = useState({
     name: "",
     phone: "",
-    email:"",
-    date:"",
-    speciality:"",
+    email: "",
+    date: "",
+    speciality: "",
     purpose: "",
-    complain: ""
-  })
+    complain: "",
+  });
 
   const handleModal = () => {
     setShowModal((prev) => !prev);
@@ -144,16 +144,6 @@ const AppointmentsPage = () => {
                   label="Make Appointment"
                   mxWt="max-w-[9.5rem]"
                   onClick={handleModal}
-                  // isDisabled={
-                  //   !appointmentPayload.firstName |
-                  //   !appointmentPayload.lastName |
-                  //   !appointmentPayload.email |
-                  //   !appointmentPayload.phoneNo |
-                  //   !appointmentPayload.password |
-                  //   !appointmentPayload.confirmPassword |
-                  //   !appointmentPayload.address
-                  // }
-                  // onClick={handleNextStage}
                 />
               </div>
             </div>

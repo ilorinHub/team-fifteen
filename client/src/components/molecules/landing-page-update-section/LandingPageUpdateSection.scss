@@ -1,0 +1,18 @@
+.landing-page-section-container {
+  @apply flex gap-y-12 flex-col py-10;
+  h3 {
+    @apply text-center font-bold text-4xl;
+  }
+  .card-container {
+    @apply flex justify-between gap-x-8 max-w-[90%] mx-auto rounded-t-md cursor-pointer;
+    .landing-page-card {
+      @apply grid grid-rows-[0.5fr_0.5fr] shadow-[0_0.1rem_2rem_-15px_rgba(0,0,0,0.2)] hover:shadow-[0_0.1rem_2rem_-15px_rgba(0,0,0,0.4)];
+      .card-content {
+        @apply p-3 text-[#333333];
+        h3 {
+          @apply text-lg text-left;
+        }
+      }
+    }
+  }
+}

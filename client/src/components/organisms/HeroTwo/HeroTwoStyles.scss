@@ -1,0 +1,19 @@
+.hero-two-container {
+  @apply bg-[#F8FAFF] py-16 flex flex-col w-full items-center justify-around;
+  .hero-card {
+    @apply flex items-center justify-center;
+
+    .card {
+      @apply bg-white flex py-[1.5rem] flex-col items-center max-w-[25%] mx-auto p-6 rounded-2xl;
+      .icon {
+        @apply h-16 w-16 rounded-full grid place-content-center bg-[#F6F9FF];
+      }
+      h2 {
+        @apply text-lg font-semibold mt-4 mb-2;
+      }
+      p {
+        @apply text-base text-center;
+      }
+    }
+  }
+}

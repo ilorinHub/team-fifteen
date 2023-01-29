@@ -19,7 +19,7 @@ const Button = ({
       onClick={onClick}
       className={clsx(
         "button",
-        ht || "h-10",
+        ht || "h-12",
         mxWt || "max-w-[7.5rem]",
         isDisabled ? "disabled-btn" : type || "primary-btn"
       )}

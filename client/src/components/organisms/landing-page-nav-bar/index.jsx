@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MyMedicLogo from "../../atoms/vectors/Logo";
 import Button from "../../atoms/button";
 import "./LandingPageNavbar.scss";
 
 const LandingPageNavBar = () => {
+  const navigate = useNavigate();
   const navLinks = [
     { label: "Book appointment", path: "/book-appointment" },
     { label: "Donate", path: "/donate" },
@@ -30,8 +31,12 @@ const LandingPageNavBar = () => {
         ))}
       </div>
       <div className="flex w-[15rem] gap-8">
-        <Button label="Login" type="outline-btn" />
-        <Button label="Sign Up" />
+        <Button
+          label="Login"
+          type="outline-btn"
+          onClick={() => navigate("/login")}
+        />
+        <Button label="Sign Up" onClick={() => navigate("/signup")} />
       </div>
     </nav>
   );
