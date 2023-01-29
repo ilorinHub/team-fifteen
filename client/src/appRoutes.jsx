@@ -21,6 +21,7 @@ const AppRoutes = () => {
   const routes = [
     "/",
     "/patient-home",
+    "/patient-profile",
     "/login",
     "/admin-login",
     "/staff-login",
