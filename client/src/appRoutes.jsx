@@ -42,7 +42,7 @@ const AppRoutes = () => {
 
     // if the route is not available, redirect to the not found page
     if (!isRouteAvailable) {
-      navigate("/patient-home");
+      navigate("/");
     }
   }, [pathname]);
 
