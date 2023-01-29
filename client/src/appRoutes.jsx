@@ -10,12 +10,17 @@ import PaymentsPage from "./pages/payments";
 import SignupPage from "./pages/sign-up";
 import LogInPage from "./pages/log-in";
 import AdminloginPage from "./pages/admin-login";
+import LandingPageNavBar from "./components/organisms/LandingPageNavBar";
+import Hero from "./components/organisms/Hero";
+import HeroTwo from "./components/organisms/HeroTwo";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<App />} />
-      
+      <Route path="/landing-page-navbar" element={<LandingPageNavBar />} />
+      <Route path="/hero" element={<Hero />} />
+      <Route path="/heroTwo" element={<HeroTwo />} />
       <Route path="/log-in" element={<LogInPage />} />
       <Route path="/admin-login" element={<AdminloginPage />} />
       <Route path="/signup" element={<SignupPage />} />
