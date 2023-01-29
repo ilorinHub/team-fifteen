@@ -119,6 +119,7 @@ const PatientsPage = () => {
                 <img src="/img/Frame.webp" alt="frame-img" />
                 <span>Abdulhafiz Jimoh</span>
               </div>
+              /*PSID, */
               <div className=" bg-[#F5F5F5] w-[25.3125rem] h-[7.9375rem] rounded-lg gap-x-8 py-2 px-6 gap-y-6">
                 <div className="grid grid-cols-[1fr_1.5fr_1fr] items-center ">
                   <div className="flex flex-col gap-y-1 ">
