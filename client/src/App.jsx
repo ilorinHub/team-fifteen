@@ -1,8 +1,8 @@
 import React from "react";
-import SignupPage from "./pages/sign-up";
+import LandingPage from "./pages/landing-page";
 
 const App = () => {
-  return <SignupPage />;
+  return <LandingPage />;
 };
 
 export default App;
