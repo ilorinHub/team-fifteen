@@ -8,3 +8,9 @@
 <li>Change directory to client or server for backend and run this command for dependencies : yarn </li>
 <li>Run this command to run app: yarn dev</li>
 </ul>
+
+  <h2>Routes</h2>
+  <ol>
+    <li>Health Provider Route: /staff-login</li>
+    <li>Admin Route: /admin-login</li>
+  </ol>
