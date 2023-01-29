@@ -43,7 +43,13 @@ const AppointmentsPage = () => {
     setModalType(type);
     setShowModal((prev) => !prev);
   };
-  const handleInputField = () => {};
+  const handleInputField = (e) => {
+    const { name, value } = e.target;
+    setAppointmentPayload((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   return (
     <ScreenLayout
       title="Appointment"

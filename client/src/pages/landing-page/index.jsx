@@ -166,13 +166,6 @@ const LandingPage = () => {
                   label="Make Appointment"
                   mxWt="max-w-[35%]"
                   onClick={handleBookAppointment}
-                  isDisabled={
-                    !appointmentPayload.name |
-                    !appointmentPayload.email |
-                    !appointmentPayload.phone |
-                    !appointmentPayload.purpose |
-                    !appointmentPayload.date
-                  }
                 />
               </div>
             </div>

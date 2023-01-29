@@ -5,9 +5,11 @@ import MyMedicLogo from "../../components/atoms/vectors/Logo";
 import Input from "../../components/atoms/Input";
 import Button from "../../components/atoms/button";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LogInPage = () => {
+  const navigate = useNavigate();
+
   const [loginPayload, setLoginPayload] = useState({
     email: "",
     password: "",
@@ -18,6 +20,10 @@ const LogInPage = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const navigateToHome = () => {
+    navigate("/patient-home");
   };
   return (
     <AuthLayout imgUrl="/img/signup3.webp" imgAlt="A smilling doctor">
@@ -50,6 +56,7 @@ const LogInPage = () => {
               label="Login"
               mxWt="max-w-full"
               isDisabled={!loginPayload.email | loginPayload.password}
+              onClick={navigateToHome}
             />
 
             <Link to="/signup">
