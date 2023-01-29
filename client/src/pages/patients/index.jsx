@@ -209,7 +209,7 @@ const PatientsPage = () => {
                   suffix='Please enter your allergies seperated by " , " '
                 />
               </div>
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-between mt-12">
                 <Button label="prev" onClick={handlePrevStage} />
                 <Button
                   label="Next"
@@ -257,10 +257,10 @@ const PatientsPage = () => {
                 />
               </div>
 
-              <div className="flex justify-between mt-8">
+              <div className="flex justify-between mt-12">
                 <Button label="prev" onClick={handlePrevStage} />
                 <Button
-                  label="Add Patient"
+                  label="Create"
                   onClick={() => {
                     handleModal();
                     handleNextStage();

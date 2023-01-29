@@ -10,9 +10,9 @@ const PatientTable = ({ tableData, tableDataHeading, onClick }) => {
   const patientTableHeading = [
     "S/N",
     "Name",
-    "PS Id",
+    "PSID",
     "Gender",
-    "Diagnoses",
+    // "Diagnoses",
     "Health State",
     "Entry Date",
     "Discharged Date",
@@ -63,7 +63,7 @@ const PatientTable = ({ tableData, tableDataHeading, onClick }) => {
               </div>
               <span className="tb-id">000001</span>
               <span className="">Female</span>
-              <span className="">Lorem ipsum dolor</span>
+              {/* <span className="">Lorem ipsum dolor</span> */}
               <span className="">Discharged</span>
               <span className="table-date">10/10/2020</span>
               <span className="table-date">10/10/2020</span>
