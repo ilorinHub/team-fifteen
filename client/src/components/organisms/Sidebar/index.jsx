@@ -1,58 +1,10 @@
 import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
 
-import AppointmentIcon from "../../atoms/vectors/AppointmentIcon";
-import DashboardIcon from "../../atoms/vectors/DashboardIcon";
-import DoctorIcon from "../../atoms/vectors/DoctorIcon";
-import DonationIcon from "../../atoms/vectors/DonationIcon";
-import PatientIcon from "../../atoms/vectors/PatientsIcon";
-import PaymentIcon from "../../atoms/vectors/PaymentIcon";
-
 import "./SidebarStyle.scss";
-const SideBar = () => {
+const SideBar = ({ sidebarLink }) => {
   const { pathname } = useLocation();
   const currentPath = pathname.split("/")[1];
-
-  const sidebarLink = [
-    {
-      label: "Overview",
-      icon: (
-        <DashboardIcon color={currentPath === "overview" ? "#336CFB" : ""} />
-      ),
-      path: "/overview",
-    },
-    {
-      label: "Appointments",
-      icon: (
-        <AppointmentIcon
-          color={currentPath === "appointment" ? "#336CFB" : ""}
-        />
-      ),
-      path: "/appointment",
-    },
-    {
-      label: "Patients",
-      icon: <PatientIcon color={currentPath === "patient" ? "#336CFB" : ""} />,
-      path: "/patient",
-    },
-    {
-      label: "Doctors",
-      icon: <DoctorIcon color={currentPath === "doctor" ? "#336CFB" : ""} />,
-      path: "/doctor",
-    },
-    {
-      label: "Donations",
-      icon: (
-        <DonationIcon color={currentPath === "donation" ? "#336CFB" : ""} />
-      ),
-      path: "/donation",
-    },
-    {
-      label: "Payments",
-      icon: <PaymentIcon color={currentPath === "payment" ? "#336CFB" : ""} />,
-      path: "/payment",
-    },
-  ];
 
   return (
     <div className="sidebar-container">
