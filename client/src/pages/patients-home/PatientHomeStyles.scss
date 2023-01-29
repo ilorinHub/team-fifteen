@@ -1,0 +1,16 @@
+.patient-dashboard-layout{
+    @apply grid grid-cols-[2fr_0.7fr];
+
+.patient-dashboard1{
+    @apply flex flex-col w-[47.625rem] h-[29.25rem];
+}
+.patient-dashboard-title-stage{
+    @apply flex justify-between;
+}
+.patient-dashboard-title{
+    @apply flex flex-col
+}
+}
+.patient-dashboard2{
+    @apply h-[46.625rem] w-[18.6875rem] bg-white
+}
