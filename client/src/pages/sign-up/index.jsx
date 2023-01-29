@@ -7,6 +7,7 @@ import Button from "../../components/atoms/button";
 import Input from "../../components/atoms/Input";
 import TextArea from "../../components/atoms/text-area";
 import Select from "../../components/atoms/select";
+import { useNavigate } from "react-router";
 
 const SignupPage = () => {
   const [signupPayload, setSignupPayload] = useState({
@@ -30,8 +31,13 @@ const SignupPage = () => {
 
   const [signupStage, setSignupStage] = useState(0);
   const [gender, setGender] = useState("");
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
   const stages = ["General Info", "Health Info", "Medic Info"];
   const genders = ["male", "female"];
+
   const handleInputField = (e) => {
     const { name, value } = e.target;
     setSignupPayload((prevData) => ({
@@ -253,7 +259,7 @@ const SignupPage = () => {
 
               <div className="flex justify-between mt-8">
                 <Button label="prev" onClick={handlePrevStage} />
-                <Button label="Sign Up" onClick={handleNextStage} />
+                <Button label="Sign Up" onClick={navigateToLogin} />
               </div>
             </div>
           ) : null}
