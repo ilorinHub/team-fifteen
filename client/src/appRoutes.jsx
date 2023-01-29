@@ -13,6 +13,7 @@ import AdminloginPage from "./pages/admin-login";
 import StaffloginPage from "./pages/staff-login";
 import DonationLanding from "./components/organisms/donation-section";
 import PatientHome from "./pages/patients-home";
+import PatientProfile from "./pages/patients-profile ";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ const AppRoutes = () => {
   const routes = [
     "/",
     "/patient-home",
+    "/patient-profile",
     "/login",
     "/admin-login",
     "/staff-login",
@@ -49,6 +51,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/patient-profile" element={<PatientProfile />} />
       <Route path="/patient-home" element={<PatientHome />} />
       <Route path="/login" element={<LogInPage />} />
       <Route path="/admin-login" element={<AdminloginPage />} />

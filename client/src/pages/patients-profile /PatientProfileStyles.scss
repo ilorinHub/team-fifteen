@@ -1,0 +1,21 @@
+.nav {
+    @apply bg-white flex justify-between w-full h-[5.5rem]
+}
+.Nav-side {
+    @apply flex gap-x-[1.125rem]
+}
+.info {
+    @apply grid px-[1.5rem]
+}
+.profile {
+    @apply flex items-center
+}
+img {
+    @apply w-[3rem] h-[3rem]
+}
+.profile-name {
+    @apply text-[1rem] font-semibold text-[#333333]
+}
+.heading {
+   @apply text-[1.125rem] text-[#000000A6] py-4
+}
