@@ -100,7 +100,7 @@ const SignupPage = () => {
                     placeholder="Enter your password"
                     name="password"
                     onChange={handleInputField}
-                    value={patientPayload.password}
+                    value={signupPayload.password}
                   />
                   <Input
                     type="password"
@@ -108,7 +108,7 @@ const SignupPage = () => {
                     placeholder="Retype your password"
                     name="confirmPassword"
                     onChange={handleInputField}
-                    value={patientPayload.confirmPassword}
+                    value={signupPayload.confirmPassword}
                   />
                 </div>
               </div>
@@ -210,12 +210,12 @@ const SignupPage = () => {
                   onClick={handleNextStage}
                   isDisabled={
                     !gender |
-                    !patientPayload.age |
-                    !patientPayload.occupation |
-                    !patientPayload.bloodType |
-                    !patientPayload.nextOfKin |
-                    !patientPayload.nextOfKinNumber |
-                    !patientPayload.allergies
+                    !signupPayload.age |
+                    !signupPayload.occupation |
+                    !signupPayload.bloodType |
+                    !signupPayload.nextOfKin |
+                    !signupPayload.nextOfKinNumber |
+                    !signupPayload.allergies
                   }
                 />
               </div>

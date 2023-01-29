@@ -12,6 +12,28 @@ import Select from "../../components/atoms/select";
 const AppointmentsPage = () => {
   const [showModal, setShowModal] = useState(true);
   const [modalType, setModalType] = useState("view");
+  const [purpose, setPurpose] = useState("");
+  const purposes = ["Consultation", "Checkout"];
+  const [speciality, setSpeciality] = useState("");
+  const specialities = [
+    "Obstetrics and gynecology",
+    "Surgery",
+    "Pediatrics",
+    "Diagnostic radiology",
+    "Neurology",
+    "Neurology",
+    "Family medicine",
+  ];
+
+  const [appointmentPayload, setAppointmentPayload] = useState({
+    name: "",
+    phone: "",
+    email:"",
+    date:"",
+    speciality:"",
+    purpose: "",
+    complain: ""
+  })
 
   const handleModal = () => {
     setShowModal((prev) => !prev);
@@ -35,10 +57,12 @@ const AppointmentsPage = () => {
         closeModal={showModal}
         modalTitle={
           modalType === "add"
-            ? "Add New Appointment Information"
+            ? "New Appointment Information"
+            : modalType === "request"
+            ? "Request for a new Appointment"
             : modalType === "view"
             ? "View Appointment Information"
-            : "Book an Appointment"
+            : null
         }
       >
         {modalType === "add" ? (
@@ -47,25 +71,23 @@ const AppointmentsPage = () => {
             className="appointment-form"
           >
             <div className="form-stage-container">
-              {/* first name and last name*/}
               <div className="flex flex-col gap-y-12">
                 <div className="form-stage mt-6">
                   <Input
-                    label="First Name"
-                    placeholder="Enter your first name"
-                    name="firstName"
+                    label="Name"
+                    placeholder="Enter your name"
+                    name="name"
                     onChange={handleInputField}
-                    // value={patientPayload.firstName}
+                    value={appointmentPayload.name}
                   />
                   <Input
-                    label="Last Name"
-                    placeholder="Enter your last name"
-                    name="lastName"
+                    label="Phone Number"
+                    placeholder="Enter your phone number"
+                    name="phone"
                     onChange={handleInputField}
-                    // value={patientPayload.lastName}
+                    value={appointmentPayload.phone}
                   />
                 </div>
-                {/* email address and phone number*/}
 
                 <div className="form-stage">
                   <Input
@@ -73,124 +95,170 @@ const AppointmentsPage = () => {
                     placeholder="Enter your email address"
                     name="email"
                     onChange={handleInputField}
-                    // value={patientPayload.email}
+                    value={appointmentPayload.email}
                   />
                   <Input
-                    label="Phone Number"
-                    placeholder="Enter your phone number"
-                    name="phoneNo"
+                    label="Date"
+                    type="date"
+                    placeholder="Enter the date"
+                    name="date"
                     onChange={handleInputField}
-                    // value={patientPayload.phoneNo}
+                    value={appointmentPayload.date}
                   />
                 </div>
-                {/* password and confirm password*/}
-
                 <div className="form-stage mb-6">
-                  <Input
-                    label="Password"
-                    placeholder="Enter your password"
-                    name="password"
+                  <Select
+                    label="Doctor Speciality"
+                    placeholder=" Select doctor's speciality"
+                    name="speciality"
                     onChange={handleInputField}
-                    // value={patientPayload.password}
+                    onClick={setSpeciality}
+                    options={specialities}
+                    title={speciality}
+                    value={appointmentPayload.doctor}
                   />
-                  <Input
-                    label="Confirm Password"
-                    placeholder="Retype your password"
-                    name="confirmPassword"
+                  <Select
+                    label="Visit Purpose"
+                    placeholder=" Select your purpose"
+                    name="purpose"
                     onChange={handleInputField}
-                    // value={patientPayload.confirmPassword}
+                    onClick={setPurpose}
+                    options={purposes}
+                    title={purpose}
+                    value={appointmentPayload.purpose}
                   />
                 </div>
               </div>
               <div className="mt-4 mb-4">
                 <TextArea
-                  label="Address"
-                  placeholder="Enter your current address"
-                  name="address"
+                  label="Extra Information"
+                  placeholder="Enter your information"
+                  name="complain"
                   onChange={handleInputField}
-                  // value={patientPayload.address}
+                  value={appointmentPayload.complain}
                 />
               </div>
 
               <div className="flex  justify-end ">
                 <Button
-                  label="Next"
+                  label="Make Appointment"
+                  mxWt="max-w-[9.5rem]"
+                  onClick={handleModal}
                   // isDisabled={
-                  //   !patientPayload.firstName |
-                  //   !patientPayload.lastName |
-                  //   !patientPayload.email |
-                  //   !patientPayload.phoneNo |
-                  //   !patientPayload.password |
-                  //   !patientPayload.confirmPassword |
-                  //   !patientPayload.address
+                  //   !appointmentPayload.firstName |
+                  //   !appointmentPayload.lastName |
+                  //   !appointmentPayload.email |
+                  //   !appointmentPayload.phoneNo |
+                  //   !appointmentPayload.password |
+                  //   !appointmentPayload.confirmPassword |
+                  //   !appointmentPayload.address
                   // }
                   // onClick={handleNextStage}
                 />
               </div>
             </div>
           </form>
-        ) : modalType === "view" ? (
-          <div>View field</div>
-        ) : modalType === "book" ? (
-          <form className="flex  flex-col gap-8 py-4">
-            <div className="form-stage mt-6 flex pb-4 gap-8">
-              <Input
-                label="Name"
-                placeholder="Enter your full name"
-                name="fullName"
-                onChange={handleInputField}
-                // value={patientPayload.fullName}
-              />
-              <Input
-                label="Phone Number"
-                placeholder="Enter your phone number"
-                name="Number"
-                onChange={handleInputField}
-                // value={patientPayload.email}
-              />
+        ) : modalType === "request" ? (
+          <div className="form-stage-container">
+            <div className="grid grid-cols-[0.3fr_0.5fr_0.2fr] items-center">
+              <img src="/img/Frame.webp" alt="frame" />
+              <div className="flex flex-col gap-y-1 my-6">
+                <span className="text-[#25282B] font-bold">Name</span>
+                <span>Mudafe Arowosola</span>
+              </div>
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Email Address</span>
+                <span>khodijahlawal@gmail.com</span>
+              </div>
             </div>
-            {/* email address and phone number*/}
 
-            <div className="form-stage flex pb-4 gap-8">
-              <Input
-                label="Email Address"
-                placeholder="Enter your email address"
-                name="email"
-                onChange={handleInputField}
-                // value={patientPayload.email}
-              />
-              <Input
-                label="Date"
-                type="date"
-                name="Date"
-                onChange={handleInputField}
-                // value={patientPayload.phoneNo}
-              />
+            <div className="flex justify-between my-6">
+              <div className="flex flex-col gap-x-4 ">
+                <span className="text-[#25282B] font-bold"> Doctor Name</span>
+                <span> Dr Arowofela </span>
+              </div>
+              <div className="flex flex-col ">
+                <span className="text-[#25282B] font-bold">Purpose</span>
+                <span>CheckUp</span>
+              </div>
+              <div className="flex flex-col ">
+                <span className="text-[#25282B] font-bold">Date</span>
+                <span>26th January, 2023</span>
+              </div>
+              <div className="flex flex-col ">
+                <span className="text-[#25282B] font-bold">Visit Time</span>
+                <span>2:00pm</span>
+              </div>
             </div>
-            <Select
-              label="Purpose of Visit"
-              placeholder="Select your purpose"
-              type="options"
-              name="email"
-              onChange={handleInputField}
-              // value={patientPayload.email}
-            />
-            <TextArea
-              label="Extra Information"
-              placeholder="If there is any other information, please state it here."
-              name="extra"
-              onChange={handleInputField}
-              // value={patientPayload.extra information}
-            />
-            <div className="flex  gap-8  justify-end">
-              <Button type="danger-outline" label="Close" />
-              <Button
-                type="primary-btn"
-                mxWt="max-w-[9.5rem]"
-                label="Make Appointment"
-              />
+            <div className="flex flex-col mb-8">
+              <span className="text-[#25282B] font-bold">
+                Other Information
+              </span>
+              <span>
+                is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make
+              </span>
             </div>
-          </form>
+            <div className="flex justify-end">
+              <Button label="Close" />
+            </div>
+          </div>
+        ) : modalType === "view" ? (
+          <div className="form-stage-container">
+            <div className="grid grid-cols-[0.3fr_0.5fr_0.2fr] items-center">
+              <img src="/img/Frame.webp" alt="frame" />
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Name</span>
+                <span>Mudafe Arowosola</span>
+              </div>
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Email Address</span>
+                <span>khodijahlawal@gmail.com</span>
+              </div>
+            </div>
+
+            <div className="flex justify-between my-6">
+              <div className="flex flex-col gap-x-4 gap-y-1">
+                <span className="text-[#25282B] font-bold"> Doctor Name</span>
+                <span> Dr Arowofela </span>
+              </div>
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Purpose</span>
+                <span>CheckUp</span>
+              </div>
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Date</span>
+                <span>26th January, 2023</span>
+              </div>
+              <div className="flex flex-col gap-y-1">
+                <span className="text-[#25282B] font-bold">Visit Time</span>
+                <span>2:00pm</span>
+              </div>
+            </div>
+            <div className="flex flex-col mb-8 gap-y-1">
+              <span className="text-[#25282B] font-bold">
+                Others Information
+              </span>
+              <span>
+                is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make
+              </span>
+            </div>
+            <div className="flex  flex-col justify-center gap-5">
+              <div className="flex flex-row justify-start w-2/3 gap-8 my-6">
+                <Input type="date" label="Reschedule Date" />
+                <Input type="time" label="Fix Appointment Time" />
+              </div>
+              <div className="flex flex-row justify-end gap-8 ">
+                <Button label="Clear" type="danger-outline" />
+                <Button label="Schedule Appointment" mxWt="max-w-[35%]" />
+              </div>
+            </div>
+          </div>
         ) : null}
       </Modal>
     </ScreenLayout>
