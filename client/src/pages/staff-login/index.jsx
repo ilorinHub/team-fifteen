@@ -7,8 +7,10 @@ import Button from "../../components/atoms/button";
 import { useState } from "react";
 
 import "../login/LogInStyles.scss";
+import { useNavigate } from "react-router";
 
 const StaffloginPage = () => {
+  const navigate = useNavigate();
   const [adminLoginPayload, setadminLoginPayload] = useState({
     email: "",
     password: "",
@@ -19,6 +21,9 @@ const StaffloginPage = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+  const navigateToHome = () => {
+    navigate("/overview");
   };
   return (
     <AuthLayout imgUrl="/img/signup2.webp" imgAlt="A smilling doctor">
@@ -53,6 +58,7 @@ const StaffloginPage = () => {
               isDisabled={
                 !adminLoginPayload.email | !adminLoginPayload.password
               }
+              onClick={navigateToHome}
             />
           </div>
         </form>

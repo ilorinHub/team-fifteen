@@ -6,6 +6,10 @@ import "./LandingPageNavbar.scss";
 
 const LandingPageNavBar = () => {
   const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate("/");
+  };
   const navLinks = [
     { label: "Book appointment", path: "/book-appointment" },
     { label: "Donate", path: "/donate" },
@@ -16,7 +20,9 @@ const LandingPageNavBar = () => {
 
   return (
     <nav className="flex justify-between px-24">
-      <MyMedicLogo />
+      <span onClick={navigateToHome}>
+        <MyMedicLogo />
+      </span>
       <div className="flex items- flex-cols gap-x-6">
         {navLinks.map(({ label, path }, i) => (
           <Link

@@ -3,11 +3,18 @@ import MyMedicLogo from "../../atoms/vectors/Logo";
 import Input from "../../atoms/Input";
 import NotificationIcon from "../../atoms/vectors/NotificationIcon";
 import "./NavStyles.scss";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const navigateToHome = () => {
+    navigate("/");
+  };
   return (
     <nav className="center">
-      <MyMedicLogo />
+      <span onClick={navigateToHome}>
+        <MyMedicLogo />
+      </span>
       <div className="flex justify-between items-center pl-4">
         <Input mxWt="max-w-[30%]" />
         <div className="flex items-center gap-x-[1.625rem]">
