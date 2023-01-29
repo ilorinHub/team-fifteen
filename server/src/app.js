@@ -4,6 +4,8 @@ const express = require("express");
 
 const { join } = require("path");
 
+const fingerPrint = require("express-fingerprint");
+
 const connect_to_db = require("./db");
 
 const app = express();
@@ -24,6 +26,8 @@ app.use(express.urlencoded({ extended: false, limit: "1mb" }));
 app.use(express.json({ limit: "1mb" }));
 
 app.use(express.static(join(__dirname, "..", "public")));
+
+app.use(fingerPrint());
 
 connect_to_db().then(() => {});
 

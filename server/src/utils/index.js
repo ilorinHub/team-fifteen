@@ -1,11 +1,13 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
-const { environment, tokenSecret } = require("./config");
+const {
+  config: { ENVIRONMENT, TOKEN_SECRET },
+} = require("./config");
 const { isArray, isObject, isString } = require("./validators");
 
 const consoleLog = (data, forced) => {
-  if (environment !== "dev" && !forced) return;
+  if (ENVIRONMENT !== "dev" && !forced) return;
   if (isObject(data)) {
     // eslint-disable-next-line no-console
     console.log(JSON.stringify(data, null, 2));
@@ -32,13 +34,13 @@ const handleResponse = (res, data, status = 200, err) => {
   return res.status(status).send(data);
 };
 const generateToken = (data) =>
-  jwt.sign(data, tokenSecret, {
+  jwt.sign(data, TOKEN_SECRET, {
     expiresIn: "3 days",
-    issuer: `OVest-${environment}`,
+    issuer: `MyMedic-${ENVIRONMENT}`,
   });
 const decodeToken = (token) =>
   new Promise((resolve, reject) => {
-    jwt.verify(token, tokenSecret, (err, decoded) => {
+    jwt.verify(token, TOKEN_SECRET, (err, decoded) => {
       if (err) reject(err);
       resolve(decoded);
     });

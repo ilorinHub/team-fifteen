@@ -1,5 +1,7 @@
 const { model, Schema } = require("mongoose");
 
+const { hashPassword } = require("../../utils");
+
 const accessSchema = new Schema(
   {
     patient_id: {
@@ -15,6 +17,7 @@ const accessSchema = new Schema(
       totp_secret: Object,
     },
     password: String,
+    last_login: Date,
   },
   { timestamps: true }
 );
@@ -29,4 +32,6 @@ accessSchema.pre("save", function (next) {
   next();
 });
 
-export const Access = model("Access", accessSchema);
+const Access = model("Access", accessSchema);
+
+module.exports = Access;
