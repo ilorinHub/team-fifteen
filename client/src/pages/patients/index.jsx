@@ -8,12 +8,47 @@ import Select from "../../components/atoms/select";
 import ScreenLayout from "../../templates/screen-layout";
 
 const PatientsPage = () => {
+  const [patientPayload, setPatientPayload] = useState({
+    lastName: "",
+    firstName: "",
+    email: "",
+    phoneNo: "",
+    nextOfKin: "",
+    nextOfKinNumber: "",
+    password: "",
+    confirmPassword: "",
+    address: "",
+    age: "",
+    bloodType: "",
+    occupation: "",
+    allergies: "",
+    currentIllness: "",
+    currentMedication: "",
+    healthHistory: "",
+  });
+  const [addPatientStage, setAddPatientStage] = useState(0);
   const [showModal, setShowModal] = useState(true);
   const [modalType, setModalType] = useState("view");
   const handleModal = () => {
     setShowModal((prev) => !prev);
   };
-  const handleInputField = () => {};
+  const [gender, setGender] = useState("");
+  const stages = ["General Info", "Health Info", "Medic Info"];
+  const genders = ["male", "female"];
+  const handleInputField = (e) => {
+    const { name, value } = e.target;
+    setPatientPayload((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleNextStage = () => {
+    setAddPatientStage((prev) => prev + 1);
+    if (addPatientStage === 2) return;
+  };
+  const handlePrevStage = () => {
+    setAddPatientStage((prev) => prev - 1);
+  };
 
   const handleAddModalType = (type) => {
     setModalType(type);
@@ -37,81 +72,203 @@ const PatientsPage = () => {
         }
       >
         {modalType === "add" ? (
-          <form
-            onClick={(e) => e.preventDefault()}
-            className="appointment-form"
-          >
-            <div className="form-stage-container">
-              {/* first name and last name*/}
-              <div className="flex flex-col gap-y-12">
-                <div className="form-stage mt-6">
-                  <Input
-                    label="First Name"
-                    placeholder="Enter your first name"
-                    name="firstName"
+          addPatientStage === 0 ? (
+            <form
+              onClick={(e) => e.preventDefault()}
+              className="appointment-form"
+            >
+              <div className="form-stage-container">
+                {/* first name and last name*/}
+                <div className="flex flex-col gap-y-12">
+                  <div className="form-stage mt-6">
+                    <Input
+                      label="First Name"
+                      placeholder="Enter your first name"
+                      name="firstName"
+                      onChange={handleInputField}
+                      value={patientPayload.firstName}
+                    />
+                    <Input
+                      label="Last Name"
+                      placeholder="Enter your last name"
+                      name="lastName"
+                      onChange={handleInputField}
+                      value={patientPayload.lastName}
+                    />
+                  </div>
+                  {/* email address and phone number*/}
+
+                  <div className="form-stage">
+                    <Input
+                      label="Email Address"
+                      placeholder="Enter your email address"
+                      name="email"
+                      onChange={handleInputField}
+                      value={patientPayload.email}
+                    />
+                    <Input
+                      label="Phone Number"
+                      placeholder="Enter your phone number"
+                      name="phoneNo"
+                      onChange={handleInputField}
+                      value={patientPayload.phoneNo}
+                    />
+                  </div>
+                  {/* password and confirm password*/}
+
+                  <div className="form-stage mb-6">
+                    <Select
+                      label="Gender"
+                      placeholder="Please select your gender"
+                      options={genders}
+                      title={gender}
+                      onClick={setGender}
+                    />
+                    <Input
+                      label="Age"
+                      placeholder="Type your age"
+                      name="age"
+                      onChange={handleInputField}
+                      value={patientPayload.age}
+                    />
+                  </div>
+                </div>
+                <div className="mt-4 mb-4">
+                  <TextArea
+                    label="Address"
+                    placeholder="Enter your current address"
+                    name="address"
                     onChange={handleInputField}
-                    // value={patientPayload.firstName}
-                  />
-                  <Input
-                    label="Last Name"
-                    placeholder="Enter your last name"
-                    name="lastName"
-                    onChange={handleInputField}
-                    // value={patientPayload.lastName}
+                    value={patientPayload.address}
                   />
                 </div>
-                {/* email address and phone number*/}
 
-                <div className="form-stage">
-                  <Input
-                    label="Email Address"
-                    placeholder="Enter your email address"
-                    name="email"
-                    onChange={handleInputField}
-                    // value={patientPayload.email}
-                  />
-                  <Input
-                    label="Phone Number"
-                    placeholder="Enter your phone number"
-                    name="phoneNo"
-                    onChange={handleInputField}
-                    // value={patientPayload.phoneNo}
-                  />
-                </div>
-                {/* password and confirm password*/}
-
-                <div className="form-stage mb-6">
-                  <Input
-                    label="Password"
-                    placeholder="Enter your password"
-                    name="password"
-                    onChange={handleInputField}
-                    // value={patientPayload.password}
-                  />
-                  <Input
-                    label="Confirm Password"
-                    placeholder="Retype your password"
-                    name="confirmPassword"
-                    onChange={handleInputField}
-                    // value={patientPayload.confirmPassword}
+                <div className="flex  justify-end ">
+                  <Button
+                    label="Next"
+                    onClick={handleNextStage}
+                    isDisabled={
+                      !gender |
+                      !patientPayload.age |
+                      !patientPayload.firstName |
+                      !patientPayload.lastName |
+                      !patientPayload.email |
+                      !patientPayload.phoneNo |
+                      !patientPayload.address
+                    }
                   />
                 </div>
               </div>
-              <div className="mt-4 mb-4">
+            </form>
+          ) : addPatientStage === 1 ? (
+            <div className="form-stage-container pt-8">
+              {/* gender and age*/}
+              <div className="flex flex-col gap-y-12">
+                {/* blood type and occupation*/}
+                <div className="form-stage flex gap-8">
+                  <Input
+                    label="Blood Type"
+                    placeholder="Enter your blood type"
+                    name="bloodType"
+                    value={patientPayload.bloodType}
+                    onChange={handleInputField}
+                  />
+                  <Input
+                    label="Occupation"
+                    name="occupation"
+                    value={patientPayload.occupation}
+                    onChange={handleInputField}
+                    placeholder="Enter your occupation"
+                  />
+                </div>
+                {/* next of kin full name and next of kin phone number*/}
+                <div className=" form-stage flex  gap-8 mb-6">
+                  <Input
+                    label="Next Of Kin Full Name"
+                    placeholder="Enter the next of kin full name"
+                    name="nextOfKin"
+                    value={patientPayload.nextOfKin}
+                    onChange={handleInputField}
+                  />
+                  <Input
+                    label="Next of Kin Phone Number"
+                    name="nextOfKinNumber"
+                    value={patientPayload.nextOfKinNumber}
+                    onChange={handleInputField}
+                    placeholder="Enter the next of kin phone number"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
                 <TextArea
-                  label="Address"
-                  placeholder="Enter your current address"
-                  name="address"
+                  label="Allergies"
+                  name="allergies"
+                  value={patientPayload.allergies}
                   onChange={handleInputField}
-                  // value={patientPayload.address}
+                  placeholder="Enter your allergies"
+                  suffix='Please enter your allergies seperated by " , " '
+                />
+              </div>
+              <div className="flex justify-between mt-8">
+                <Button label="prev" onClick={handlePrevStage} />
+                <Button
+                  label="Next"
+                  onClick={handleNextStage}
+                  isDisabled={
+                    !gender |
+                    !patientPayload.age |
+                    !patientPayload.occupation |
+                    !patientPayload.bloodType |
+                    !patientPayload.nextOfKin |
+                    !patientPayload.nextOfKinNumber |
+                    !patientPayload.allergies
+                  }
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="w-full pt-6">
+              <div className="flex flex-col gap-y-16">
+                <TextArea
+                  label="Current Illness"
+                  name="currentIllness"
+                  value={patientPayload.currentIllness}
+                  onChange={handleInputField}
+                  placeholder="Enter your current illness"
+                  suffix='Please enter your current illness seperated by " , "'
+                />
+
+                <TextArea
+                  label="Current Medication"
+                  name="currentMedication"
+                  value={patientPayload.currentMedication}
+                  onChange={handleInputField}
+                  placeholder="Enter your current medication"
+                  suffix='Please enter your current medication seperated by " , "'
+                />
+
+                <TextArea
+                  label="Health History"
+                  name="healthHistory"
+                  value={patientPayload.healthHistory}
+                  onChange={handleInputField}
+                  placeholder="Enter your health history"
+                  suffix='Please enter your health history seperated by " , "'
                 />
               </div>
 
-              <div className="flex  justify-end ">
-                <Button label="Next" />
+              <div className="flex justify-between mt-8">
+                <Button label="prev" onClick={handlePrevStage} />
+                <Button
+                  label="Add Patient"
+                  onClick={() => {
+                    handleModal();
+                    handleNextStage();
+                  }}
+                />
               </div>
             </div>
-          </form>
+          )
         ) : modalType === "view" ? (
           <div className="form-stage-container">
             <div className="flex justify-between  gap-x-4">
@@ -170,7 +327,7 @@ const PatientsPage = () => {
               <span>Medical Conditions</span>
               <span>Chronic headache, Back ache, Whooping cough, Catarhh</span>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end" onClick={handleModal}>
               <Button label="Close" />
             </div>
           </div>

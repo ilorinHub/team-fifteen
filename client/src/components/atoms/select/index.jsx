@@ -9,7 +9,7 @@ const Select = ({
   name,
   placeholder = "Select your value",
   title,
-  onClick = () => {},
+  onClick,
   options = ["Select", "Selected", "myopia"],
 }) => {
   const [openSubmenu, setOpenSubmenu] = useState(false);

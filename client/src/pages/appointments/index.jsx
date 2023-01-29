@@ -25,6 +25,16 @@ const AppointmentsPage = () => {
     "Family medicine",
   ];
 
+  const [appointmentPayload, setAppointmentPayload] = useState({
+    name: "",
+    phone: "",
+    email:"",
+    date:"",
+    speciality:"",
+    purpose: "",
+    complain: ""
+  })
+
   const handleModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -68,14 +78,14 @@ const AppointmentsPage = () => {
                     placeholder="Enter your name"
                     name="name"
                     onChange={handleInputField}
-                    // value={patientPayload.name}
+                    value={appointmentPayload.name}
                   />
                   <Input
                     label="Phone Number"
                     placeholder="Enter your phone number"
-                    name="phone number"
+                    name="phone"
                     onChange={handleInputField}
-                    // value={patientPayload.phone number}
+                    value={appointmentPayload.phone}
                   />
                 </div>
 
@@ -85,7 +95,7 @@ const AppointmentsPage = () => {
                     placeholder="Enter your email address"
                     name="email"
                     onChange={handleInputField}
-                    // value={patientPayload.email address}
+                    value={appointmentPayload.email}
                   />
                   <Input
                     label="Date"
@@ -93,19 +103,19 @@ const AppointmentsPage = () => {
                     placeholder="Enter the date"
                     name="date"
                     onChange={handleInputField}
-                    // value={patientPayload.date}
+                    value={appointmentPayload.date}
                   />
                 </div>
                 <div className="form-stage mb-6">
                   <Select
                     label="Doctor Speciality"
                     placeholder=" Select doctor's speciality"
-                    name="doctor"
+                    name="speciality"
                     onChange={handleInputField}
                     onClick={setSpeciality}
                     options={specialities}
                     title={speciality}
-                    // value={patientPayload.doctor name}
+                    value={appointmentPayload.doctor}
                   />
                   <Select
                     label="Visit Purpose"
@@ -115,7 +125,7 @@ const AppointmentsPage = () => {
                     onClick={setPurpose}
                     options={purposes}
                     title={purpose}
-                    // value={patientPayload.purpose}
+                    value={appointmentPayload.purpose}
                   />
                 </div>
               </div>
@@ -125,7 +135,7 @@ const AppointmentsPage = () => {
                   placeholder="Enter your information"
                   name="complain"
                   onChange={handleInputField}
-                  // value={patientPayload.extra information}
+                  value={appointmentPayload.complain}
                 />
               </div>
 
@@ -133,14 +143,15 @@ const AppointmentsPage = () => {
                 <Button
                   label="Make Appointment"
                   mxWt="max-w-[9.5rem]"
+                  onClick={handleModal}
                   // isDisabled={
-                  //   !patientPayload.firstName |
-                  //   !patientPayload.lastName |
-                  //   !patientPayload.email |
-                  //   !patientPayload.phoneNo |
-                  //   !patientPayload.password |
-                  //   !patientPayload.confirmPassword |
-                  //   !patientPayload.address
+                  //   !appointmentPayload.firstName |
+                  //   !appointmentPayload.lastName |
+                  //   !appointmentPayload.email |
+                  //   !appointmentPayload.phoneNo |
+                  //   !appointmentPayload.password |
+                  //   !appointmentPayload.confirmPassword |
+                  //   !appointmentPayload.address
                   // }
                   // onClick={handleNextStage}
                 />

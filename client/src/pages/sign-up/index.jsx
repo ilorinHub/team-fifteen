@@ -9,7 +9,7 @@ import TextArea from "../../components/atoms/text-area";
 import Select from "../../components/atoms/select";
 
 const SignupPage = () => {
-  const [patientPayload, setPatientPayload] = useState({
+  const [signupPayload, setSignupPayload] = useState({
     lastName: "",
     firstName: "",
     email: "",
@@ -34,7 +34,7 @@ const SignupPage = () => {
   const genders = ["male", "female"];
   const handleInputField = (e) => {
     const { name, value } = e.target;
-    setPatientPayload((prevData) => ({
+    setSignupPayload((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -63,14 +63,14 @@ const SignupPage = () => {
                     placeholder="Enter your first name"
                     name="firstName"
                     onChange={handleInputField}
-                    value={patientPayload.firstName}
+                    value={signupPayload.firstName}
                   />
                   <Input
                     label="Last Name"
                     placeholder="Enter your last name"
                     name="lastName"
                     onChange={handleInputField}
-                    value={patientPayload.lastName}
+                    value={signupPayload.lastName}
                   />
                 </div>
                 {/* email address and phone number*/}
@@ -81,14 +81,14 @@ const SignupPage = () => {
                     placeholder="Enter your email address"
                     name="email"
                     onChange={handleInputField}
-                    value={patientPayload.email}
+                    value={signupPayload.email}
                   />
                   <Input
                     label="Phone Number"
                     placeholder="Enter your phone number"
                     name="phoneNo"
                     onChange={handleInputField}
-                    value={patientPayload.phoneNo}
+                    value={signupPayload.phoneNo}
                   />
                 </div>
                 {/* password and confirm password*/}
@@ -100,7 +100,7 @@ const SignupPage = () => {
                     placeholder="Enter your password"
                     name="password"
                     onChange={handleInputField}
-                    value={patientPayload.password}
+                    value={signupPayload.password}
                   />
                   <Input
                     type="password"
@@ -108,7 +108,7 @@ const SignupPage = () => {
                     placeholder="Retype your password"
                     name="confirmPassword"
                     onChange={handleInputField}
-                    value={patientPayload.confirmPassword}
+                    value={signupPayload.confirmPassword}
                   />
                 </div>
               </div>
@@ -118,7 +118,7 @@ const SignupPage = () => {
                   placeholder="Enter your current address"
                   name="address"
                   onChange={handleInputField}
-                  value={patientPayload.address}
+                  value={signupPayload.address}
                 />
               </div>
 
@@ -126,13 +126,13 @@ const SignupPage = () => {
                 <Button
                   label="Next"
                   isDisabled={
-                    !patientPayload.firstName |
-                    !patientPayload.lastName |
-                    !patientPayload.email |
-                    !patientPayload.phoneNo |
-                    !patientPayload.password |
-                    !patientPayload.confirmPassword |
-                    !patientPayload.address
+                    !signupPayload.firstName |
+                    !signupPayload.lastName |
+                    !signupPayload.email |
+                    !signupPayload.phoneNo |
+                    !signupPayload.password |
+                    !signupPayload.confirmPassword |
+                    !signupPayload.address
                   }
                   onClick={handleNextStage}
                 />
@@ -153,7 +153,7 @@ const SignupPage = () => {
                   <Input
                     label="Age"
                     name="age"
-                    value={patientPayload.age}
+                    value={signupPayload.age}
                     placeholder="Enter your age"
                     onChange={handleInputField}
                   />
@@ -164,13 +164,13 @@ const SignupPage = () => {
                     label="Blood Type"
                     placeholder="Enter your blood type"
                     name="bloodType"
-                    value={patientPayload.bloodType}
+                    value={signupPayload.bloodType}
                     onChange={handleInputField}
                   />
                   <Input
                     label="Occupation"
                     name="occupation"
-                    value={patientPayload.occupation}
+                    value={signupPayload.occupation}
                     onChange={handleInputField}
                     placeholder="Enter your occupation"
                   />
@@ -181,13 +181,13 @@ const SignupPage = () => {
                     label="Next Of Kin Full Name"
                     placeholder="Enter the next of kin full name"
                     name="nextOfKin"
-                    value={patientPayload.nextOfKin}
+                    value={signupPayload.nextOfKin}
                     onChange={handleInputField}
                   />
                   <Input
                     label="Next of Kin Phone Number"
                     name="nextOfKinNumber"
-                    value={patientPayload.nextOfKinNumber}
+                    value={signupPayload.nextOfKinNumber}
                     onChange={handleInputField}
                     placeholder="Enter the next of kin phone number"
                   />
@@ -197,7 +197,7 @@ const SignupPage = () => {
                 <TextArea
                   label="Allergies"
                   name="allergies"
-                  value={patientPayload.allergies}
+                  value={signupPayload.allergies}
                   onChange={handleInputField}
                   placeholder="Enter your allergies"
                   suffix='Please enter your allergies seperated by " , " '
@@ -210,12 +210,12 @@ const SignupPage = () => {
                   onClick={handleNextStage}
                   isDisabled={
                     !gender |
-                    !patientPayload.age |
-                    !patientPayload.occupation |
-                    !patientPayload.bloodType |
-                    !patientPayload.nextOfKin |
-                    !patientPayload.nextOfKinNumber |
-                    !patientPayload.allergies
+                    !signupPayload.age |
+                    !signupPayload.occupation |
+                    !signupPayload.bloodType |
+                    !signupPayload.nextOfKin |
+                    !signupPayload.nextOfKinNumber |
+                    !signupPayload.allergies
                   }
                 />
               </div>
@@ -226,7 +226,7 @@ const SignupPage = () => {
                 <TextArea
                   label="Current Illness"
                   name="currentIllness"
-                  value={patientPayload.currentIllness}
+                  value={signupPayload.currentIllness}
                   onChange={handleInputField}
                   placeholder="Enter your current illness"
                   suffix='Please enter your current illness seperated by " , "'
@@ -235,7 +235,7 @@ const SignupPage = () => {
                 <TextArea
                   label="Current Medication"
                   name="currentMedication"
-                  value={patientPayload.currentMedication}
+                  value={signupPayload.currentMedication}
                   onChange={handleInputField}
                   placeholder="Enter your current medication"
                   suffix='Please enter your current medication seperated by " , "'
@@ -244,7 +244,7 @@ const SignupPage = () => {
                 <TextArea
                   label="Health History"
                   name="healthHistory"
-                  value={patientPayload.healthHistory}
+                  value={signupPayload.healthHistory}
                   onChange={handleInputField}
                   placeholder="Enter your health history"
                   suffix='Please enter your health history seperated by " , "'
