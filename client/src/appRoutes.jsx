@@ -11,6 +11,7 @@ import SignupPage from "./pages/sign-up";
 import LogInPage from "./pages/login";
 import AdminloginPage from "./pages/admin-login";
 import StaffloginPage from "./pages/staff-login";
+import DonationLanding from "./components/organisms/donationlanding";
 
 const AppRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const AppRoutes = () => {
       <Route path="/appointment" element={<AppointmentsPage />} />
       <Route path="/doctor" element={<DoctorsPage />} />
       <Route path="/payment" element={<PaymentsPage />} />
+      <Route path="/donationlanding" element={<DonationLanding/>} />
     </Routes>
   );
 };
