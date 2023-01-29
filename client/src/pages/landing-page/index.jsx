@@ -178,7 +178,26 @@ const LandingPage = () => {
             </div>
           </form>
         ) : modalType === "donate" ? (
-          <div>{donationStage === "money" ? <div></div> : <div></div>}</div>
+          <div className="donation-type-container">
+            <h4 className="">
+              Kindly Select the type of donation you want to make
+            </h4>
+
+            <div className="donation-type-selection">
+              {donationTypes.map(({ icon, content, label }, i) => (
+                <div
+                  className="flex flex-col items-center gap-y-2 shadow max-w-[37%] mx-auto p-5 rounded-md cursor-pointer"
+                  key={"donate-key" + label + i}
+                >
+                  <span className="h-8 w-8 grid place-content-center bg-[#F5F8FF] rounded-full">
+                    {icon}
+                  </span>
+                  <span className="">{label}</span>
+                  <p className="text-[#828282] text-center">{content}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : null}
       </Modal>
     </div>

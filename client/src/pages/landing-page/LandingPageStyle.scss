@@ -1,0 +1,9 @@
+.donation-type-container {
+  @apply flex flex-col gap-y-10 max-w-[80%] mx-auto;
+  h4 {
+    @apply text-2xl max-w-[75%] mx-auto text-center;
+  }
+  .donation-type-selection {
+    @apply flex justify-between;
+  }
+}
