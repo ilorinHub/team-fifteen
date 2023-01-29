@@ -29,7 +29,11 @@ const Hero = ({ onClick }) => {
         />
       </div>
       <div className="hidden lg:flex">
-        <img src="/img/heroimg.webp" alt="image of a doctor" />
+        <img
+          src="/img/heroimg.webp"
+          alt="image of a doctor"
+          className="w-full"
+        />
       </div>
     </div>
   );
